@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="13"
         android:targetSdkVersion="18" />
 
     <application
@@ -25,6 +25,14 @@
         <activity
             android:name="com.example.angelsanddemons.SetupMenu"
             android:label="@string/title_activity_setup_menu" >
+        </activity>
+        <activity
+            android:name="com.example.angelsanddemons.IntroActivity"
+            android:label="@string/title_activity_intro" >
+        </activity>
+        <activity
+            android:name="com.example.angelsanddemons.FirstRoundActivity"
+            android:label="@string/title_activity_first_round" >
         </activity>
     </application>
 
