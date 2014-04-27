@@ -26,6 +26,14 @@
             android:name="com.example.angelsanddemons.SetupMenu"
             android:label="@string/title_activity_setup_menu" >
         </activity>
+        <activity
+            android:name="com.example.angelsanddemons.IntroActivity"
+            android:label="@string/title_activity_intro" >
+        </activity>
+        <activity
+            android:name="com.example.angelsanddemons.MainGame"
+            android:label="@string/title_activity_main_game" >
+        </activity>
     </application>
 
 </manifest>

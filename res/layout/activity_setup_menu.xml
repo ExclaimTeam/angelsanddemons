@@ -9,51 +9,59 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".SetupMenu" >
 
-    <TextSwitcher
-        android:id="@+id/textSwitcher1"
-        android:layout_width="wrap_content"
+    <SeekBar
+        android:id="@+id/seekBar1"
+        android:progressDrawable="@android:color/white"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_marginLeft="99dp"
-        android:layout_marginTop="76dp"
-        android:layout_toRightOf="@+id/textView1" >
-    </TextSwitcher>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="144dp" 
+		android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:max="6"
+		android:progress="2"/>
 
-    <ImageButton
-        android:id="@+id/brownarrowforward"
-        android:layout_width="wrap_content"
+    <SeekBar
+        android:id="@+id/seekBar2"
+        android:progressDrawable="@android:color/white"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textSwitcher1"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_marginBottom="21dp"
-        android:layout_marginRight="24dp"
-        android:src="@drawable/brownarrowback" />
-
-    <ImageButton
-        android:id="@+id/brownarrowbackward"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/brownarrowforward"
-        android:layout_marginLeft="28dp"
-        android:layout_toRightOf="@+id/brownarrowforward"
-        android:src="@drawable/brownarrow" />
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/seekBar1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="117dp"
+        android:max="10"         />
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="61dp"
-        android:layout_marginTop="137dp"
-        android:text="@string/numplayers" />
+        android:layout_alignBottom="@+id/seekBar1"
+        android:layout_alignLeft="@+id/seekBar1"
+        android:layout_marginBottom="52dp"
+        android:layout_marginLeft="53dp"
+        android:textColor="@color/black"
+        android:text="TextView" />
 
-    <SeekBar
-        android:id="@+id/seekBar1"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/textSwitcher1"
-        android:layout_marginTop="69dp" />
+        android:layout_alignBottom="@+id/seekBar2"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_marginBottom="54dp"
+        android:textColor="@color/black"
+        android:text="TextView" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/seekBar2"
+        android:layout_below="@+id/seekBar2"
+        android:layout_marginTop="44dp"
+        android:src="@drawable/intro_start_selector" />
 
 </RelativeLayout>
