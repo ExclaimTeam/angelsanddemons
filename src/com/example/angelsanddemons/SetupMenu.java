@@ -22,7 +22,8 @@ public class SetupMenu extends Activity {
 	private TextView textView2;
 	
 	public int starting_players = 4;
-	public int players = starting_players;
+	public int progress = 2;
+	public int players = starting_players + progress;
 	public int goal;
 	
 	ImageButton imageButton;
@@ -99,15 +100,4 @@ public class SetupMenu extends Activity {
 			    }
 		});
 	}
-
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.setup_menu, menu);
-		return true;
-	}
-	
-	
-
 }

@@ -39,53 +39,82 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int angelanddemonicon=0x7f020000;
-        public static final int anglesdemonsicon=0x7f020001;
-        public static final int background=0x7f020002;
-        public static final int brownarrow=0x7f020003;
-        public static final int brownarrowback=0x7f020004;
-        public static final int ic_launcher=0x7f020005;
-        public static final int intro_start_selector=0x7f020006;
-        public static final int start_f=0x7f020007;
-        public static final int start_s=0x7f020008;
-        public static final int wheat_icon=0x7f020009;
+        public static final int actioncard_bless=0x7f020000;
+        public static final int actioncard_curse=0x7f020001;
+        public static final int actioncard_disgrace=0x7f020002;
+        public static final int actioncard_guard=0x7f020003;
+        public static final int actioncard_steal=0x7f020004;
+        public static final int angelanddemonicon=0x7f020005;
+        public static final int anglesdemonsicon=0x7f020006;
+        public static final int background=0x7f020007;
+        public static final int background_angel=0x7f020008;
+        public static final int background_column_left=0x7f020009;
+        public static final int background_column_right=0x7f02000a;
+        public static final int background_demon=0x7f02000b;
+        public static final int brownarrow=0x7f02000c;
+        public static final int brownarrowback=0x7f02000d;
+        public static final int elect_coin=0x7f02000e;
+        public static final int ic_launcher=0x7f02000f;
+        public static final int icon_book=0x7f020010;
+        public static final int icon_dog=0x7f020011;
+        public static final int icon_fish=0x7f020012;
+        public static final int icon_flower=0x7f020013;
+        public static final int icon_hammer=0x7f020014;
+        public static final int icon_lute=0x7f020015;
+        public static final int icon_staff=0x7f020016;
+        public static final int icon_sword=0x7f020017;
+        public static final int icon_tree=0x7f020018;
+        public static final int icon_wheat=0x7f020019;
+        public static final int intro_start_selector=0x7f02001a;
+        public static final int rising_sun=0x7f02001b;
+        public static final int start_f=0x7f02001c;
+        public static final int start_s=0x7f02001d;
+        public static final int victory=0x7f02001e;
+        public static final int wheat_icon=0x7f02001f;
     }
     public static final class id {
         public static final int action_settings=0x7f09000c;
         public static final int activity_main_game=0x7f090006;
         public static final int button1=0x7f090004;
         public static final int button2=0x7f090005;
-        public static final int imageButton1=0x7f09000b;
+        public static final int imageButton1=0x7f09000a;
         public static final int next=0x7f090003;
         public static final int scrollView=0x7f090000;
-        public static final int seekBar1=0x7f090008;
-        public static final int seekBar2=0x7f090009;
+        public static final int seekBar1=0x7f090007;
+        public static final int seekBar2=0x7f090008;
         public static final int testButton=0x7f090002;
         public static final int textView1=0x7f090001;
-        public static final int textView2=0x7f09000a;
-        public static final int wheatView=0x7f090007;
+        public static final int textView2=0x7f090009;
+        public static final int victory=0x7f09000b;
     }
     public static final class layout {
         public static final int activity_intro=0x7f030000;
         public static final int activity_main=0x7f030001;
         public static final int activity_main_game=0x7f030002;
         public static final int activity_setup_menu=0x7f030003;
+        public static final int activity_victory=0x7f030004;
     }
     public static final class menu {
         public static final int intro=0x7f080000;
         public static final int main=0x7f080001;
         public static final int main_game=0x7f080002;
         public static final int setup_menu=0x7f080003;
+        public static final int victory=0x7f080004;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
+        public static final int disgrace_status=0x7f060006;
+        public static final int guard_status=0x7f060007;
         public static final int hello_world=0x7f060002;
-        public static final int long_text=0x7f060006;
+        public static final int is_angel=0x7f060008;
+        public static final int long_text=0x7f06000a;
+        public static final int numicon=0x7f060009;
         public static final int numplayers=0x7f060004;
         public static final int title_activity_intro=0x7f060005;
-        public static final int title_activity_main_game=0x7f060007;
+        public static final int title_activity_main_game=0x7f06000b;
         public static final int title_activity_setup_menu=0x7f060003;
+        public static final int title_activity_victory=0x7f06000c;
     }
     public static final class style {
         /** 

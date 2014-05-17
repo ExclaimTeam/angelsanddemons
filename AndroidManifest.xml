@@ -34,6 +34,14 @@
             android:name="com.example.angelsanddemons.MainGame"
             android:label="@string/title_activity_main_game" >
         </activity>
+        <activity
+            android:name="com.example.angelsanddemons.VictoryActivity"
+            android:label="@string/title_activity_victory" >
+        </activity>
+        <activity
+            android:name="com.example.angelsanddemons.Victory"
+            android:label="@string/title_activity_victory" >
+        </activity>
     </application>
 
 </manifest>
