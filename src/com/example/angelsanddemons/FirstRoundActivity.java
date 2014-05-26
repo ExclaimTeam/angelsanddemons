@@ -1,18 +1,15 @@
 package com.example.angelsanddemons;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
 import android.view.DragEvent;
 import android.view.MotionEvent;
@@ -21,8 +18,10 @@ import android.view.View.DragShadowBuilder;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -44,7 +43,7 @@ ImageView player;
 ImageView timebackground;
 int numangels;
 List<Integer> scores = new ArrayList<Integer>();
-Integer[] icons= {R.drawable.icon_book,R.drawable.icon_dog,R.drawable.icon_fish,R.drawable.icon_flower,R.drawable.icon_hammer,R.drawable.icon_lute,R.drawable.icon_staff,R.drawable.icon_sword,R.drawable.icon_tree,R.drawable.icon_wheat,};
+Integer[] icons= {R.drawable.icon_bookenhancedagain,R.drawable.icon_dog,R.drawable.icon_fish,R.drawable.icon_flower,R.drawable.icon_hammer,R.drawable.icon_lute,R.drawable.icon_staff,R.drawable.icon_shield,R.drawable.icon_tree,R.drawable.icon_wheat,};
 LinkedList<Integer> icons_used = new LinkedList();
 
 boolean is_night = true;
@@ -63,6 +62,11 @@ Integer[] cloudanim={R.anim.cloudprogression, R.anim.cloudprogression2, R.anim.c
 ImageView cloud1, cloud2, cloud3, cloud4, cloud5;
 ImageView[] cloudimages = {cloud1, cloud2, cloud3, cloud4, cloud5};
 Integer[] cloudsnight={R.drawable.cloud1night, R.drawable.cloud2night, R.drawable.cloud3night, R.drawable.cloud4night, R.drawable.cloud5night};
+
+int dmin = 10000, drange = 20000, tmin = 0, trange = 5000;
+double amin = 0.1, arange = 0.5, ymin = 0;
+final double yrange = 0.35;
+
 
 
 	public Integer getIconNumber(){
@@ -174,9 +178,19 @@ Integer[] cloudsnight={R.drawable.cloud1night, R.drawable.cloud2night, R.drawabl
 		return true;
 	}
 	
-	public void cloudsetter() {
-		Animation cloudprogression = AnimationUtils.loadAnimation(this, cloudanim[rng.nextInt(cloudanim.length) - 1]);
-		cloudimages[rng.nextInt(cloudimages.length) - 1].startAnimation(cloudprogression);
+	public TranslateAnimation makeDrift() {
+	    float ycoord = (float) (yrange*height*Math.random());
+	    TranslateAnimation drift = new TranslateAnimation((float) width,(float) -width, ycoord, ycoord);
+		drift.setDuration((long) (dmin + (Math.random() * (drange))));
+	    drift.setStartOffset((long) (tmin + (Math.random() * (trange))));
+	    return drift;
+	}
+	
+	public AlphaAnimation glow() {
+	    AlphaAnimation glow = new AlphaAnimation (0, 1);
+		glow.setDuration((long) ((Math.random() * (drange))));
+	    glow.setStartOffset((long) (tmin + (Math.random() * (trange))));
+	    return glow;
 	}
 	
 
@@ -208,68 +222,60 @@ Integer[] cloudsnight={R.drawable.cloud1night, R.drawable.cloud2night, R.drawabl
 		timebackground.setScaleType(ScaleType.CENTER_CROP);
 		relativeLayout.addView(timebackground);
 
-        //background clouds
-		/*
-		int x = 0;
-		while (x <= cloudimages.length){;
-		cloudimages[(cloudimages.length) - x - 1].setImageResource(cloudsnight[(cloudsnight.length) - x - 1]);
-		relativeLayout.addView(cloudimages[(cloudimages.length) - x - 1]);
-		x++;
-		}
-		*/
-		cloud1 = new ImageView(this);
-		cloud2 = new ImageView(this);
+        //nighttime lamp animation
+		ImageView nightlamps = new ImageView(this);
+	    nightlamps.setImageResource(R.drawable.nighttimebackground_villagelamps);
+		nightlamps.setScaleType(ScaleType.CENTER_CROP);
 
-		cloud3 = new ImageView(this);
+	    //Animation lampglow = AnimationUtils.loadAnimation(this, R.anim.nightvillagelamps);
+	    nightlamps.startAnimation(glow());
 
-		cloud4 = new ImageView(this);
+	    relativeLayout.addView(nightlamps);
 
-		cloud5 = new ImageView(this);
+		//Background stuff
+	    //Clouds
+	    class MyImageView extends ImageView {
+	    	public MyImageView(Context context) {
+				super(context);
+			}
 
-		cloud1.setImageResource(R.drawable.cloud1night);
-		cloud2.setImageResource(R.drawable.cloud2night);
-		cloud3.setImageResource(R.drawable.cloud3night);
-		cloud4.setImageResource(R.drawable.cloud4night);
-		cloud5.setImageResource(R.drawable.cloud5night);
-		relativeLayout.addView(cloud1);
-		relativeLayout.addView(cloud2);
-		relativeLayout.addView(cloud3);
-		relativeLayout.addView(cloud4);
-		relativeLayout.addView(cloud5);
-
-
-		//Declare the timer
-		Timer t = new Timer();
-		//Set the schedule function and rate
-		t.scheduleAtFixedRate(new TimerTask() {
-
-		    @Override
-		    public void run() {
-		        //Called each time when 1000 milliseconds (1 second) (the period parameter)
-		    	//We must use this function in order to change the text view text
-		    	runOnUiThread(new Runnable() {
-
-		    	    @Override
-		    	    public void run() {
-		    	        cloudsetter();
-		    	    }
-
-		    	});
-		    }
-
-		},
-		//Set how long before to start calling the TimerTask (in milliseconds)
-		0,
-		//Set the amount of time between each execution (in milliseconds)
-		rng.nextInt(5) * 2000);
-        
-        
-
-
+			@Override
+	    	protected void onAnimationEnd() {
+	    	    super.onAnimationEnd();
+	    	    this.setAlpha((float) (amin+(Math.random() * arange)));
+	    	    this.startAnimation(makeDrift());
+	    	}
+	    }
+	    ImageView cloud1 = new MyImageView(this);
+	    ImageView cloud2 = new MyImageView(this);
+	    ImageView cloud3 = new MyImageView(this);
+	    ImageView cloud4 = new MyImageView(this);
+	    ImageView cloud5 = new MyImageView(this);
+	    relativeLayout.addView(cloud1);
+	    relativeLayout.addView(cloud2);
+	    relativeLayout.addView(cloud4);
+	    relativeLayout.addView(cloud5);
+	    cloud1.setImageResource(R.drawable.cloud1day);    
+	    cloud2.setImageResource(R.drawable.cloud2day);
+	    cloud3.setImageResource(R.drawable.cloud3day);
+	    cloud4.setImageResource(R.drawable.cloud4day);
+	    cloud5.setImageResource(R.drawable.cloud5day);
+	    cloud1.setAlpha((float) (amin+(Math.random() * arange)));
+	    cloud2.setAlpha((float) (amin+(Math.random() * arange)));
+	    cloud3.setAlpha((float) (amin+(Math.random() * arange)));
+	    cloud4.setAlpha((float) (amin+(Math.random() * arange)));
+	    cloud5.setAlpha((float) (amin+(Math.random() * arange)));
+	    cloud1.startAnimation(makeDrift());
+	    cloud2.startAnimation(makeDrift());
+	    cloud3.startAnimation(makeDrift());
+	    cloud4.startAnimation(makeDrift());
+	    cloud5.startAnimation(makeDrift());
+		
+		
 
        
         //Size of Icon
-        RelativeLayout.LayoutParams icon_dimensions = new RelativeLayout.LayoutParams(width/5, height/6);
+        RelativeLayout.LayoutParams icon_dimensions = new RelativeLayout.LayoutParams(width/4, height/5);
         
         //Make card
         card = new ImageView(this);

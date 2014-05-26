@@ -14,6 +14,8 @@ public final class R {
         public static final int cloudprogression3=0x7f040002;
         public static final int cloudprogression4=0x7f040003;
         public static final int cloudprogression5=0x7f040004;
+        public static final int nightvillagelamps=0x7f040005;
+        public static final int nightvillagelampsoff=0x7f040006;
     }
     public static final class attr {
     }
@@ -59,16 +61,20 @@ public final class R {
         public static final int elect_coin=0x7f02001c;
         public static final int ic_launcher=0x7f02001d;
         public static final int icon_book=0x7f02001e;
-        public static final int icon_dog=0x7f02001f;
-        public static final int icon_fish=0x7f020020;
-        public static final int icon_flower=0x7f020021;
-        public static final int icon_hammer=0x7f020022;
-        public static final int icon_lute=0x7f020023;
-        public static final int icon_staff=0x7f020024;
-        public static final int icon_sword=0x7f020025;
-        public static final int icon_tree=0x7f020026;
-        public static final int icon_wheat=0x7f020027;
-        public static final int nighttimebackground=0x7f020028;
+        public static final int icon_bookenhanced=0x7f02001f;
+        public static final int icon_bookenhancedagain=0x7f020020;
+        public static final int icon_dog=0x7f020021;
+        public static final int icon_fish=0x7f020022;
+        public static final int icon_flower=0x7f020023;
+        public static final int icon_hammer=0x7f020024;
+        public static final int icon_lute=0x7f020025;
+        public static final int icon_shield=0x7f020026;
+        public static final int icon_staff=0x7f020027;
+        public static final int icon_sword=0x7f020028;
+        public static final int icon_tree=0x7f020029;
+        public static final int icon_wheat=0x7f02002a;
+        public static final int nighttimebackground=0x7f02002b;
+        public static final int nighttimebackground_villagelamps=0x7f02002c;
     }
     public static final class id {
         public static final int action_settings=0x7f090009;
