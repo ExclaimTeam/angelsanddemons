@@ -11,7 +11,7 @@
 
     <SeekBar
         android:id="@+id/seekBar1"
-        android:progressDrawable="@android:color/white"
+        android:progressDrawable="@drawable/seekbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
