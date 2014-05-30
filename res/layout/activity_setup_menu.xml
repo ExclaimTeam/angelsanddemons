@@ -12,6 +12,7 @@
     <SeekBar
         android:id="@+id/seekBar1"
         android:progressDrawable="@drawable/seekbar"
+        android:thumb="@drawable/custom_slider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
