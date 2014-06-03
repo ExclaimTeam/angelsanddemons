@@ -1,26 +1,69 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    <com.example.angelsanddemons.ScrollViewExt
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="436dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="match_parent"
-            android:layout_height="1764dp"
-            android:text="@string/long_text" />
-    </com.example.angelsanddemons.ScrollViewExt>
+    android:background="@drawable/daytimebackground"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
     
-    <ImageButton
-        android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="38dp"
-        android:src="@drawable/intro_start_selector" />
+        <ImageView
+	    android:id="@+id/pillar1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="match_parent"
+	    android:scaleType="fitXY"
+	    android:layout_alignParentRight="true"
+	    android:src="@drawable/background_column_left"/>
+     
+    <ImageView
+	    android:id="@+id/pillar2"
+	    android:layout_width="wrap_content"
+	    android:layout_height="match_parent"
+	    android:scaleType="fitXY"
+	    android:layout_alignParentLeft="true"
+	    android:src="@drawable/background_column_right" />
+    
+    <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layout_gravity="bottom"
+    android:weightSum="100">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:orientation="horizontal">
+       	<com.example.angelsanddemons.ScrollViewExt
+	    	android:id="@+id/scrollView"
+			android:layout_marginRight="40dp"
+			android:layout_marginLeft="40dp"
+			android:layout_marginTop="30dp"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" >
+	       	<TextView
+				android:id="@+id/textView1"
+				android:layout_width="match_parent"
+				android:layout_height="1764dp"
+				android:text="@string/long_text" 
+				android:textColor="@color/black"/>
+  	   	</com.example.angelsanddemons.ScrollViewExt>
+        
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50" >
+       	
+            <ImageButton
+		        android:id="@+id/next"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_gravity="bottom"
+				android:layout_marginLeft="150dp
+				"
+		        android:layout_marginBottom="50dp"
+		        android:src="@drawable/intro_start_selector" />
+        </LinearLayout>
 
+</LinearLayout>
+    
 </RelativeLayout>
+

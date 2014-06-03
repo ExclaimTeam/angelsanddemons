@@ -2,8 +2,12 @@ package com.example.angelsanddemons;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
+import android.graphics.Shader.TileMode;
+import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -34,12 +38,14 @@ public class SetupMenu extends Activity {
 	    intent.putExtra(players_key, players);
 	    intent.putExtra(goal_key, goal);
 	    startActivity(intent);
+	    overridePendingTransition(0,0);
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_setup_menu);
+		
 		
 		ImageButton imageButton = (ImageButton)findViewById(R.id.imageButton1);
 		imageButton.setOnClickListener(new OnClickListener() {
@@ -51,7 +57,8 @@ public class SetupMenu extends Activity {
 						
 		seekBarPlayers = (SeekBar) findViewById(R.id.seekBar1);
 		textView = (TextView) findViewById(R.id.textView1);
-		
+		Typeface q = Typeface.createFromAsset(getAssets(), "myfont.ttf");
+		textView.setTypeface(q);
 		textView.setText("Number of Players:  " + Integer.toString(starting_players + seekBarPlayers.getProgress()));
 		seekBarPlayers.setOnSeekBarChangeListener(
 		    new OnSeekBarChangeListener() {
@@ -76,7 +83,9 @@ public class SetupMenu extends Activity {
 		});
 		seekBarGoal = (SeekBar) findViewById(R.id.seekBar2);
 		textView2 = (TextView) findViewById(R.id.textView2);
+		textView2.setTypeface(q);
 		textView2.setText("Goal:  " + seekBarGoal.getProgress());	
+		
 		seekBarGoal.setOnSeekBarChangeListener(
 		    new OnSeekBarChangeListener() {
 		    	int progress_goal = 0;

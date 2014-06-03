@@ -21,11 +21,11 @@ import android.view.View.DragShadowBuilder;
 import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -44,6 +44,7 @@ LinkedList<Integer> icons_used = new LinkedList();
 
 Button nextButton;
 TextView scoreboard;
+TextView transitiontext;
 RelativeLayout relativeLayout;
 Random rng = new Random();
 
@@ -57,7 +58,7 @@ TextView[] tplayers = {tplayer1, tplayer2, tplayer3, tplayer4, tplayer5, tplayer
 TextView instructions;
 
 Integer[] cards={R.drawable.actioncard_bless,R.drawable.actioncard_curse,R.drawable.actioncard_disgrace,R.drawable.actioncard_guard,R.drawable.actioncard_steal};
-Integer[] icons= {R.drawable.icon_book,R.drawable.icon_dog,R.drawable.icon_fish,R.drawable.icon_flower,R.drawable.icon_hammer,R.drawable.icon_lute,R.drawable.icon_staff,R.drawable.icon_sword,R.drawable.icon_tree,R.drawable.icon_wheat,};
+Integer[] icons= {R.drawable.icon_book2,R.drawable.icon_dog2,R.drawable.icon_fish2,R.drawable.icon_flower2,R.drawable.icon_hammer2,R.drawable.icon_lute2,R.drawable.icon_staff2,R.drawable.icon_shield2,R.drawable.icon_tree2,R.drawable.icon_wheat2,};
 
 	public void showScores(){
 		for (int i = 0; i < numplayers; i++) {
@@ -205,6 +206,8 @@ Integer[] icons= {R.drawable.icon_book,R.drawable.icon_dog,R.drawable.icon_fish,
         relativeLayout.setOnDragListener(this);
         relativeLayout.setBackgroundResource(R.drawable.nighttimebackground);
 		
+        //Transition
+        
         //Number of players from intent
         Intent intent = getIntent();
         numplayers = intent.getIntExtra("exclaim.team.angelsanddemons.MESSAGE1", 0 );
@@ -306,6 +309,7 @@ Integer[] icons= {R.drawable.icon_book,R.drawable.icon_dog,R.drawable.icon_fish,
 					displayInstructions("Night");
 					currentplayernum++;
 					displayAllegiance();
+					//nextPlayerTransition(1);
 				}
 				//Night to Day
 				else if ((turnCounter - numplayers)% 2 == 0){
@@ -351,7 +355,7 @@ Integer[] icons= {R.drawable.icon_book,R.drawable.icon_dog,R.drawable.icon_fish,
             }
             
         //font
-        Typeface qcentro = Typeface.createFromAsset(getAssets(),"fonts/quattrocento_regular.ttf");
+        Typeface qcentro = Typeface.createFromAsset(getAssets(),"myfont.ttf");
         
         //i is player index starting from 0
         int i = 0;
@@ -424,8 +428,8 @@ Integer[] icons= {R.drawable.icon_book,R.drawable.icon_dog,R.drawable.icon_fish,
         
         //Allegiance Indicator
         allegiance = new ImageView(this);
-        allegiance.setX(width/2 - width/8);
-        allegiance.setY(0);
+        allegiance.setX(3*width/4 - width/8);
+        allegiance.setY(5*height/7);
         RelativeLayout.LayoutParams allegiance_dimensions = new RelativeLayout.LayoutParams(width/4, height/8);
         allegiance.setLayoutParams(allegiance_dimensions);
         allegiance.setScaleType(ScaleType.FIT_XY);
@@ -434,15 +438,15 @@ Integer[] icons= {R.drawable.icon_book,R.drawable.icon_dog,R.drawable.icon_fish,
         
         //Instructions TextView
         instructions = new TextView(this);
-        	/*
-        	 *  specify font and size
-        	 * 
-        	 */
-        instructions.setX(width/8);
-        instructions.setY(7*height/8);
+		Typeface q = Typeface.createFromAsset(getAssets(), "myfont.ttf");
+		LinearLayout.LayoutParams instruction_layout = new LinearLayout.LayoutParams(width/3,200);
+		instructions.setLayoutParams(instruction_layout);
+		instructions.setTypeface(q);
+		instructions.setTextSize(20);
+        instructions.setX(width/7);
+        instructions.setY(7*height/10);
         displayInstructions("Night");
         relativeLayout.addView(instructions);
-        
         
         //make visible to program
         setContentView(relativeLayout);
@@ -483,10 +487,23 @@ Integer[] icons= {R.drawable.icon_book,R.drawable.icon_dog,R.drawable.icon_fish,
 	
 	public void displayInstructions(String time){
 		if (time == "Day"){
-			instructions.setText("Day Text");
+			instructions.setText("Elect A Villager To Ascend");
 		}	
 		else{
-			instructions.setText("Night Text");	
+			instructions.setText("Drag To Use Your Action");	
 		}
+	}
+
+	public void nextPlayerTansition(int n){
+		if (n==1){
+			transitiontext.setText("Player "+ String.valueOf(currentplayernum+1) +" Start");
+		}
+		else{
+			transitiontext.setText("");
+		}
+
+		
+		
+		
 	}
 }

@@ -49,6 +49,7 @@ public class IntroActivity extends Activity {
 
 			public void onClick(View v){
 				startGameActivity(v);
+				overridePendingTransition(0,0);
 			}
 		});
 		scrollDown(scrollView);

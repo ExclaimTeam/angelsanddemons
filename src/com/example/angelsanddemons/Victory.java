@@ -15,7 +15,7 @@ public class Victory extends Activity {
 	public final static String winner_key = "exclaim.team.angelsanddemons.winner";
 	public final static String helpers_key = "exclaim.team.angelsanddemons.helpers";
 	List<Integer> helpers = new ArrayList<Integer>();
-	Integer[] icons= {R.drawable.icon_book,R.drawable.icon_dog,R.drawable.icon_fish,R.drawable.icon_flower,R.drawable.icon_hammer,R.drawable.icon_lute,R.drawable.icon_staff,R.drawable.icon_sword,R.drawable.icon_tree,R.drawable.icon_wheat,};
+	Integer[] icons= {R.drawable.icon_book2,R.drawable.icon_dog2,R.drawable.icon_fish2,R.drawable.icon_flower2,R.drawable.icon_hammer2,R.drawable.icon_lute2,R.drawable.icon_staff2,R.drawable.icon_shield2,R.drawable.icon_tree2,R.drawable.icon_wheat2,};
 
 
 	@Override
