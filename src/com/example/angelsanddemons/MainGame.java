@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -23,6 +24,7 @@ import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
@@ -42,7 +44,7 @@ final double yrange = 0.35;
 List<Integer> scores = new ArrayList<Integer>();
 LinkedList<Integer> icons_used = new LinkedList();
 
-Button nextButton;
+ImageButton nextButton;
 TextView scoreboard;
 TextView transitiontext;
 RelativeLayout relativeLayout;
@@ -296,9 +298,10 @@ Integer[] icons= {R.drawable.icon_book2,R.drawable.icon_dog2,R.drawable.icon_fis
 		relativeLayout.addView(card);
 		
 		//Make Button
-		nextButton = new Button(this);
+		nextButton = new ImageButton(this);
 		nextButton.setVisibility(View.INVISIBLE);
-		nextButton.setText("Next");
+		nextButton.setImageResource(R.drawable.endturn_selector);
+		nextButton.setBackgroundColor(Color.TRANSPARENT);
 		nextButton.setX(4*width/5);
 		nextButton.setY(4*height/5);
 		nextButton.setOnClickListener(new OnClickListener() {
