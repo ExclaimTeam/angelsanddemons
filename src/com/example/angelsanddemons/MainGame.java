@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -23,7 +24,6 @@ import android.view.View.OnClickListener;
 import android.view.View.OnDragListener;
 import android.view.View.OnTouchListener;
 import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -148,14 +148,17 @@ Integer[] icons= {R.drawable.icon_book2,R.drawable.icon_dog2,R.drawable.icon_fis
 							card.setVisibility(View.VISIBLE);
 							break;
 						}
-						//cannot reach goal with bless
+						//cannot reach goal with steal
 						if (scores.get((Integer) currentplayernum) + 1 == goal){
+							scores.set((Integer) playernum, scores.get((Integer) playernum)-1);
+							break;
 						}
 						else {
 							scores.set((Integer) currentplayernum, scores.get((Integer) currentplayernum)+1);
+							scores.set((Integer) playernum, scores.get((Integer) playernum)-1);
+							break;
 						}
-						scores.set((Integer) playernum, scores.get((Integer) playernum)-1);
-						break;
+
 					case 10:
 						//if disgraced
 						if ((Boolean) player_icon.getTag(R.string.disgrace_status)) {
@@ -163,7 +166,7 @@ Integer[] icons= {R.drawable.icon_book2,R.drawable.icon_dog2,R.drawable.icon_fis
 							break;
 						}
 						//win condition
-						if (scores.get((Integer)playernum) + 1 == goal){
+						if (scores.get((Integer)playernum) + 1 >= goal){
 							Intent intent2 = new Intent(this, Victory.class);
 							intent2.putExtra(winner_key, (Integer) player_icon_images[(Integer) playernum].getTag(R.string.numicon));
 						    ArrayList<Integer> helpers = new ArrayList<Integer>();
@@ -302,7 +305,9 @@ Integer[] icons= {R.drawable.icon_book2,R.drawable.icon_dog2,R.drawable.icon_fis
 		nextButton.setVisibility(View.INVISIBLE);
 		nextButton.setImageResource(R.drawable.endturn_selector);
 		nextButton.setBackgroundColor(Color.TRANSPARENT);
-		nextButton.setX(4*width/5);
+		RelativeLayout.LayoutParams start_end_turn_layout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT);
+		start_end_turn_layout.addRule(RelativeLayout.CENTER_HORIZONTAL);
+		nextButton.setLayoutParams(start_end_turn_layout);
 		nextButton.setY(4*height/5);
 		nextButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v){
