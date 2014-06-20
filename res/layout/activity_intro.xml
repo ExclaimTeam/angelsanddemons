@@ -62,8 +62,7 @@
 		        android:background="@android:color/transparent"
 		        android:src="@drawable/continue_selector" />
         </LinearLayout>
-
-</LinearLayout>
+	</LinearLayout>
     
 </RelativeLayout>
 

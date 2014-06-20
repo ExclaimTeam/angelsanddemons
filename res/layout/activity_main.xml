@@ -4,39 +4,22 @@
     android:layout_height="match_parent"
     android:background="@drawable/daytimebackground"
     tools:context=".MainActivity" >
-    
-    	
-    
-        <ImageView
-       android:id="@+id/pillar1"
-       android:layout_width="wrap_content"
-       android:layout_height="match_parent"
-       android:scaleType="fitXY"
-       android:layout_alignParentRight="true"
-       android:src="@drawable/background_column_left"/>
-        
-            <ImageView
-       android:id="@+id/pillar2"
-       android:layout_width="wrap_content"
-       android:layout_height="match_parent"
-       android:scaleType="fitXY"
-       android:layout_alignParentLeft="true"
-       android:src="@drawable/background_column_right" />
-    
 
-    
-    <ImageButton
-        android:id="@+id/imageButton1"
+    <Button
+        android:text="Start Game"
+        android:textColor="@color/white"
+        android:width="150dp"
+		android:textSize="25sp"
+        android:scaleType="fitXY"
+        android:background="@drawable/startgame_selector"
+        android:id="@+id/nextbutton1"        
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/startgame_selector" />
-
-
-    <TextView
+        android:layout_marginBottom="50dp"  />      
+        
+	<TextView
         android:id="@+id/titletext"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
@@ -49,5 +32,171 @@
         android:textSize="60sp"
         android:textColor="@color/black"
         android:text="@string/title" />
+    
+    <SeekBar
+        android:visibility="invisible"
+        android:id="@+id/seekBar1"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+        android:progressDrawable="@drawable/seekbar"
+        android:thumb="@drawable/custom_slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="75dp" 
+		android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:max="6"
+		android:progress="2"/>
+
+    <SeekBar
+        android:visibility="invisible"
+        android:id="@+id/seekBar2"
+	    android:paddingLeft="@dimen/activity_horizontal_margin"
+	    android:paddingRight="@dimen/activity_horizontal_margin"
+        android:progressDrawable="@drawable/seekbar"
+        android:thumb="@drawable/custom_slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/seekBar1"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="100dp"
+        android:max="10"         />
+
+    <TextView
+      	android:visibility="invisible"
+        android:textSize="20sp"
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/seekBar1"
+        android:layout_alignLeft="@+id/seekBar1"
+        android:layout_marginBottom="52dp"
+        android:layout_marginLeft="53dp"
+        android:textColor="@color/black"
+        android:text="TextView" />
+
+    <TextView
+		android:visibility="invisible"
+        android:textSize="20sp"
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/seekBar2"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_marginBottom="54dp"
+        android:textColor="@color/black"
+        android:text="TextView" />
+
+    <Button
+        android:text="Next"
+        android:textColor="@color/white"
+        android:width="140dp"
+		android:textSize="25sp"
+        android:scaleType="fitXY"
+        android:background="@drawable/startgame_selector"
+        android:layout_alignParentRight="true"
+        android:visibility="invisible"
+        android:id="@+id/nextbutton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp" />
+
+    <Button
+        android:text="Back"
+        android:textColor="@color/white"
+        android:width="140dp"
+		android:textSize="25sp"
+        android:scaleType="fitXY"
+        android:background="@drawable/startgame_selector"
+        android:layout_alignParentLeft="true"
+        android:visibility="invisible"
+        android:id="@+id/backbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp" />
+    
+    <Button
+        android:text="Back"
+        android:textColor="@color/white"
+        android:width="140dp"
+		android:textSize="25sp"
+        android:scaleType="fitXY"
+        android:background="@drawable/startgame_selector"
+        android:layout_alignParentLeft="true"
+        android:visibility="invisible"
+        android:id="@+id/backbutton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp" />
+
+<LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layout_gravity="bottom"
+    android:weightSum="100">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
+        android:orientation="horizontal">
+       	<com.example.angelsanddemons.ScrollViewExt
+	    	android:id="@+id/introscroll"
+	    	android:visibility="invisible"
+			android:layout_marginRight="40dp"
+			android:layout_marginLeft="40dp"
+			android:layout_marginTop="30dp"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" >
+	       	<TextView
+				android:id="@+id/textView1"
+				android:layout_width="match_parent"
+				android:layout_height="1764dp"
+				android:text="@string/long_text" 
+				android:textColor="@color/black"/>
+  	   	</com.example.angelsanddemons.ScrollViewExt>
+        
+    </LinearLayout>
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50" >
+       	
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+	       	<Button
+		        android:text="Start"
+		        android:textColor="@color/white"
+		        android:width="140dp"
+				android:textSize="25sp"
+		        android:scaleType="fitXY"
+		        android:background="@drawable/startgame_selector"
+                android:visibility="invisible"
+		        android:id="@+id/next3"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+				android:layout_gravity="bottom"
+		        android:layout_alignParentBottom="true"	
+		        android:layout_alignParentRight="true"	
+		        android:layout_marginBottom="50dp" />
+            
+            
+        </RelativeLayout>
+            
+           
+                   	
+
+        </LinearLayout>
+</LinearLayout>
+    
+    
 
 </RelativeLayout>

@@ -54,6 +54,9 @@ ImageView card;
 ImageView allegiance;
 ImageView player1, player2, player3, player4, player5, player6, player7, player8, player9, player10;
 ImageView[] player_icon_images = {player1, player2, player3, player4, player5, player6, player7, player8, player9, player10};
+ImageView d1,d2,d3,d4,d5,d6,d7,d8,d9,d10;
+ImageView[] darks = {d1,d2,d3,d4,d5,d6,d7,d8,d9,d10};
+
 
 TextView tplayer1, tplayer2, tplayer3, tplayer4, tplayer5, tplayer6, tplayer7, tplayer8, tplayer9, tplayer10;
 TextView[] tplayers = {tplayer1, tplayer2, tplayer3, tplayer4, tplayer5, tplayer6, tplayer7, tplayer8, tplayer9, tplayer10};
@@ -317,6 +320,9 @@ Integer[] icons= {R.drawable.icon_book2,R.drawable.icon_dog2,R.drawable.icon_fis
 					displayInstructions("Night");
 					currentplayernum++;
 					displayAllegiance();
+					for(int i=0; i<numplayers; i++){
+						darks[i].setVisibility(View.INVISIBLE);
+					}
 					//nextPlayerTransition(1);
 				}
 				//Night to Day
@@ -328,6 +334,9 @@ Integer[] icons= {R.drawable.icon_book2,R.drawable.icon_dog2,R.drawable.icon_fis
 					if (currentplayernum == numplayers){
 						currentplayernum = 0;
 					}
+					for(int i=0; i<numplayers; i++){
+						darks[i].setVisibility(View.INVISIBLE);
+					}
 					displayAllegiance("Day");
 					displayInstructions("Day");
 				}
@@ -338,6 +347,9 @@ Integer[] icons= {R.drawable.icon_book2,R.drawable.icon_dog2,R.drawable.icon_fis
 					displayInstructions("Night");
 					displayAllegiance();
 					showScores();
+					for(int i=0; i<numplayers; i++){
+						darks[i].setVisibility(View.VISIBLE);
+					}
 				}
 				turnCounter++;
 				nextButton.setVisibility(View.INVISIBLE);
@@ -371,7 +383,10 @@ Integer[] icons= {R.drawable.icon_book2,R.drawable.icon_dog2,R.drawable.icon_fis
         //Arrangement Generator
         while (i < numplayers){
         	//Image View Settings
-            ImageView player= new ImageView(this); 
+            ImageView player= new ImageView(this);
+            ImageView dark = new ImageView(this);
+            dark.setImageResource(R.drawable.darken2);
+            dark.setLayoutParams(icon_dimensions);
             int numicon = getIconNumber();
 	    	player.setImageResource(icons[numicon]);
 			player.setLayoutParams(icon_dimensions);
@@ -383,6 +398,11 @@ Integer[] icons= {R.drawable.icon_book2,R.drawable.icon_dog2,R.drawable.icon_fis
 			float y = height/2 - height/12 - mActionBarSize - y_adjust;
 			player.setX(x);
 			player.setY(y);
+			
+			//Night time fog
+			dark.setX(x);
+			dark.setY(y);
+			darks[i] = dark;
 			
 			//Textview to display score during night
 			TextView tplayer = new TextView(this);
@@ -420,6 +440,7 @@ Integer[] icons= {R.drawable.icon_book2,R.drawable.icon_dog2,R.drawable.icon_fis
 			i += 1;
 			relativeLayout.addView(player);
 			relativeLayout.addView(tplayer);
+			relativeLayout.addView(dark);
         }
         
         //Fill scoreboard
